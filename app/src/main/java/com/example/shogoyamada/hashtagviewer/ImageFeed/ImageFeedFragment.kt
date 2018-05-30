@@ -1,8 +1,8 @@
 package com.example.shogoyamada.hashtagviewer.ImageFeed
 
 import adapter.ImageFeedGridViewAdapter
-import android.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -25,7 +25,7 @@ class ImageFeedFragment : Fragment(), ImageFeedContract {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        presenter = ImageFeedPresenter(activity, this)
+        presenter = ImageFeedPresenter(context, this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
