@@ -33,6 +33,11 @@ class ImageFeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // TODO 仮でこう実装している
+        renderImageGrid(view)
+    }
+
+    private fun renderImageGrid(view: View) {
         val sampleImageList = createSampleList()
         val activity = activity as ImageFeedActivity
         val adapter = ImageFeedGridViewAdapter(activity, sampleImageList)
