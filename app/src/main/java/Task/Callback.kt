@@ -1,7 +1,9 @@
 package Task
 
+import com.example.shogoyamada.hashtagviewer.Setting.ImageFeedModel
+
 interface Callback {
-    fun onSuccess(result: String)
+    fun onSuccess(result: ImageFeedModel)
 
     fun onError()
 }

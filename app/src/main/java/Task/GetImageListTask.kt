@@ -1,21 +1,26 @@
 package Task
 
 import android.os.AsyncTask
-//import com.example.shogoyamada.hashtagviewer.Setting.ImageFeedModel
+import com.example.shogoyamada.hashtagviewer.Setting.ImageFeedModel
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
 
-class GetImageListTask(callbackListener: Callback): AsyncTask<String, Void, String>() {
+class GetImageListTask(callbackListener: Callback): AsyncTask<String, Void, ImageFeedModel>() {
 
-    val listner = callbackListener
+    private val listner = callbackListener
 
-    override fun doInBackground(vararg params: String?): String? {
+    override fun doInBackground(vararg params: String?): ImageFeedModel? {
 
         val client = OkHttpClient()
         val request = Request.Builder()
-                .url("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=eb269071eb0ae77c9c26198af2598a55&format=rest&format=json&per_page=20&text=summer")
+                .url("https://api.flickr.com/services/rest/" +
+                        "?method=flickr.photos.search" +
+                        "&api_key=eb269071eb0ae77c9c26198af2598a55" +
+                        "&format=rest" +
+                        "&format=json" +
+                        "&per_page=20&text=summer")
                 .get()
                 .build()
 
@@ -28,13 +33,13 @@ class GetImageListTask(callbackListener: Callback): AsyncTask<String, Void, Stri
         }
 
         return if (response.isSuccessful) {
-            response.body()?.string()
+            parse(response.body()?.string())
         } else {
             null
         }
     }
 
-    override fun onPostExecute(result: String?) {
+    override fun onPostExecute(result: ImageFeedModel?) {
         super.onPostExecute(result)
 
         if (result != null) {
@@ -42,5 +47,14 @@ class GetImageListTask(callbackListener: Callback): AsyncTask<String, Void, Stri
         } else {
             listner.onError()
         }
+    }
+
+    private fun parse(json: String?): ImageFeedModel? {
+
+        if (json == null) {
+            return null
+        }
+
+        return ImageFeedModel.createPhotoModelList(json)
     }
 }
