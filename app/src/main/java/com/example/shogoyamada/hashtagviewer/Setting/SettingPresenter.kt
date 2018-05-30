@@ -22,6 +22,12 @@ class SettingPresenter(@NonNull activity: Activity, @NonNull private val viewCon
      */
     fun addButton(){
         val text = viewContract.getEditText()
-        print(text)
+
+        if (text == ""){
+            viewContract.errorMessage()
+            return
+        }
+
+        viewContract.moveToImageFeed(text)
     }
 }

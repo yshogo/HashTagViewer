@@ -1,11 +1,14 @@
 package com.example.shogoyamada.hashtagviewer.Setting
 
+import android.app.AlertDialog
 import android.app.Fragment
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.example.shogoyamada.hashtagviewer.ImageFeed.ImageFeedActivity
 import com.example.shogoyamada.hashtagviewer.R
 import kotlinx.android.synthetic.main.fragment_setting.*
 
@@ -45,5 +48,18 @@ class SettingFragment: Fragment(), SettingContract {
 
     override fun getEditText(): String {
         return hashTagText.text.toString()
+    }
+
+    override fun errorMessage() {
+        AlertDialog.Builder(activity).setTitle("空はなしでお願いします")
+                .setPositiveButton("OK"){ _, _ ->
+                }.show()
+    }
+
+    override fun moveToImageFeed(text: String) {
+        val intent = Intent(activity, ImageFeedActivity::class.java).apply {
+            putExtra("text", text)
+        }
+        startActivity(intent)
     }
 }
