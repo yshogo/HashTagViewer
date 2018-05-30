@@ -43,13 +43,14 @@
                 android:gravity="center"
                 >
                 <EditText
-                    android:id="@+id/email_input"
+                    android:id="@+id/hashTagText"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:hint="鶏肉"
                     android:inputType="textEmailAddress" />
 
                 <Button
+                    android:id="@+id/addButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="追加"
