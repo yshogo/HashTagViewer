@@ -12,7 +12,7 @@ class ImageFeedFragmentAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm){
     }
 
     override fun getCount(): Int {
-        return 10
+        return 1
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
