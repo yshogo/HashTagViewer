@@ -1,8 +1,8 @@
 package com.example.shogoyamada.hashtagviewer.ImageFeed
 
 import adapter.ImageFeedGridViewAdapter
+import android.app.Fragment
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +10,9 @@ import android.view.ViewGroup
 import com.example.shogoyamada.hashtagviewer.R
 import kotlinx.android.synthetic.main.fragment_image_feed.view.*
 
-class ImageFeedFragment : Fragment() {
+class ImageFeedFragment : Fragment(), ImageFeedContract {
 
+    private lateinit var presenter: ImageFeedPresenter
     companion object {
         private var position = 0
 
@@ -23,6 +24,8 @@ class ImageFeedFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        presenter = ImageFeedPresenter(activity, this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +38,12 @@ class ImageFeedFragment : Fragment() {
 
         // TODO 仮でこう実装している
         renderImageGrid(view)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        presenter.onResume()
     }
 
     private fun renderImageGrid(view: View) {
