@@ -20,7 +20,8 @@ class GetImageListTask(callbackListener: Callback): AsyncTask<String, Void, Imag
                         "&api_key=eb269071eb0ae77c9c26198af2598a55" +
                         "&format=rest" +
                         "&format=json" +
-                        "&per_page=20&text=summer")
+                        "&per_page=20&text=summer"+
+                        "&nojsoncallback=1")
                 .get()
                 .build()
 
