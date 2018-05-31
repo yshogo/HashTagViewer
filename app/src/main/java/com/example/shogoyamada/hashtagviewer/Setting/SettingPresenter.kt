@@ -18,9 +18,9 @@ class SettingPresenter(@NonNull activity: Activity, @NonNull private val viewCon
     }
 
     /**
-     * 追加ボタンを押した時
+     * 次へボタンを押した時
      */
-    fun addButton(){
+    fun nextButton(){
         val text = viewContract.getEditText()
 
         if (text == ""){
@@ -29,5 +29,17 @@ class SettingPresenter(@NonNull activity: Activity, @NonNull private val viewCon
         }
 
         viewContract.moveToImageFeed(text)
+    }
+
+    /**
+     * 追加ボタンを押した時
+     */
+    fun addButton(text: String) {
+
+        if (text == "") {
+            viewContract.errorMessage()
+        } else {
+            viewContract.addText(text)
+        }
     }
 }

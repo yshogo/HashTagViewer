@@ -7,4 +7,6 @@ interface SettingContract {
     fun errorMessage()
 
     fun moveToImageFeed(text: String)
+
+    fun addText(text: String)
 }

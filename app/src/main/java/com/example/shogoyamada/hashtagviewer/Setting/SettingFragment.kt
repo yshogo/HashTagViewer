@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import com.example.shogoyamada.hashtagviewer.ImageFeed.ImageFeedActivity
 import com.example.shogoyamada.hashtagviewer.R
 import kotlinx.android.synthetic.main.fragment_setting.*
@@ -32,7 +33,11 @@ class SettingFragment: Fragment(), SettingContract {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.addButton).setOnClickListener {
-            presenter.addButton()
+            presenter.addButton(hashTagText.text.toString())
+        }
+
+        view.findViewById<View>(R.id.next).setOnClickListener {
+            presenter.nextButton()
         }
     }
 
@@ -61,5 +66,18 @@ class SettingFragment: Fragment(), SettingContract {
             putExtra("text", text)
         }
         startActivity(intent)
+    }
+
+    override fun addText(text: String) {
+        val textView = TextView(activity).apply {
+            setText("#$text")
+            textSize = 30.0F
+        }
+        select_name.addView(textView)
+        updateText("")
+    }
+
+    private fun updateText(text: String) {
+        hashTagText.setText(text)
     }
 }
