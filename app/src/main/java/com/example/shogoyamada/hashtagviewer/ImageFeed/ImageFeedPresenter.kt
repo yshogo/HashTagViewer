@@ -9,6 +9,17 @@ import com.example.shogoyamada.hashtagviewer.Setting.ImageFeedModel
 class ImageFeedPresenter(context: Context?, @NonNull private val viewContract: ImageFeedContract) {
 
     fun onResume(){
+
+        val searchWord = viewContract.getSearchKeyWordText()
+        if (searchWord == null) {
+            throw IllegalStateException("データがからです")
+            return
+        }
+
+        requestGetPhotoList(searchWord)
+    }
+
+    private fun requestGetPhotoList(text: String) {
         // APIを叩く
         val task = GetImageListTask(object : Callback {
             override fun onSuccess(result: ImageFeedModel) {
@@ -23,6 +34,7 @@ class ImageFeedPresenter(context: Context?, @NonNull private val viewContract: I
                 print("エラーが発生しました")
             }
         })
-        task.execute()
+
+        task.execute(text)
     }
 }

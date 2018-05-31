@@ -13,14 +13,6 @@ import kotlinx.android.synthetic.main.fragment_image_feed.view.*
 class ImageFeedFragment : Fragment(), ImageFeedContract {
 
     private lateinit var presenter: ImageFeedPresenter
-    companion object {
-        private var position = 0
-
-        fun newInstance(position: Int): Fragment {
-            this.position = position
-            return ImageFeedFragment()
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,5 +45,10 @@ class ImageFeedFragment : Fragment(), ImageFeedContract {
         adapter.notifyDataSetChanged()
         view?.image_feed?.layoutManager = GridLayoutManager(activity, 4)
         view?.image_feed?.adapter = adapter
+    }
+
+    override fun getSearchKeyWordText(): String? {
+        val bundle = arguments
+        return bundle?.get("searchWord") as String
     }
 }

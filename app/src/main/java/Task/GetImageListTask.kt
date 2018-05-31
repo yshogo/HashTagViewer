@@ -13,6 +13,7 @@ class GetImageListTask(callbackListener: Callback): AsyncTask<String, Void, Imag
 
     override fun doInBackground(vararg params: String?): ImageFeedModel? {
 
+        val searchWord = params[0]
         val client = OkHttpClient()
         val request = Request.Builder()
                 .url("https://api.flickr.com/services/rest/" +
@@ -20,7 +21,9 @@ class GetImageListTask(callbackListener: Callback): AsyncTask<String, Void, Imag
                         "&api_key=eb269071eb0ae77c9c26198af2598a55" +
                         "&format=rest" +
                         "&format=json" +
-                        "&per_page=20&text=summer"+
+                        "&per_page=20" +
+                        "&text="
+                        + searchWord +
                         "&nojsoncallback=1")
                 .get()
                 .build()
