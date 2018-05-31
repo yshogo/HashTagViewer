@@ -2,6 +2,7 @@ package com.example.shogoyamada.hashtagviewer.Setting
 
 import android.app.Activity
 import android.support.annotation.NonNull
+import dto.SettingDataDto
 
 class SettingPresenter(@NonNull activity: Activity, @NonNull private val viewContract: SettingContract) {
 
@@ -21,14 +22,14 @@ class SettingPresenter(@NonNull activity: Activity, @NonNull private val viewCon
      * 次へボタンを押した時
      */
     fun nextButton(){
-        val text = viewContract.getEditText()
+        val list = viewContract.getSettingDataList()
 
-        if (text == ""){
+        if (list.size == 0){
             viewContract.errorMessage()
             return
         }
 
-        viewContract.moveToImageFeed(text)
+        viewContract.moveToImageFeed(convertDto(list))
     }
 
     /**
@@ -36,10 +37,15 @@ class SettingPresenter(@NonNull activity: Activity, @NonNull private val viewCon
      */
     fun addButton(text: String) {
 
+        viewContract.settingTextList(text)
         if (text == "") {
             viewContract.errorMessage()
         } else {
             viewContract.addText(text)
         }
+    }
+
+    private fun convertDto(list: ArrayList<String>): SettingDataDto {
+        return SettingDataDto(list)
     }
 }

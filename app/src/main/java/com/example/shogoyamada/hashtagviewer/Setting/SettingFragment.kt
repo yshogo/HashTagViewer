@@ -2,7 +2,6 @@ package com.example.shogoyamada.hashtagviewer.Setting
 
 import android.app.AlertDialog
 import android.app.Fragment
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +10,13 @@ import android.widget.Button
 import android.widget.TextView
 import com.example.shogoyamada.hashtagviewer.ImageFeed.ImageFeedActivity
 import com.example.shogoyamada.hashtagviewer.R
+import dto.SettingDataDto
 import kotlinx.android.synthetic.main.fragment_setting.*
 
 class SettingFragment: Fragment(), SettingContract {
 
     private lateinit var presenter: SettingPresenter
-
+    private val list = ArrayList<String>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -61,11 +61,8 @@ class SettingFragment: Fragment(), SettingContract {
                 }.show()
     }
 
-    override fun moveToImageFeed(text: String) {
-        val intent = Intent(activity, ImageFeedActivity::class.java).apply {
-            putExtra("text", text)
-        }
-        startActivity(intent)
+    override fun moveToImageFeed(dto: SettingDataDto) {
+        startActivity(ImageFeedActivity.createIntent(activity, dto))
     }
 
     override fun addText(text: String) {
@@ -75,6 +72,14 @@ class SettingFragment: Fragment(), SettingContract {
         }
         select_name.addView(textView)
         updateText("")
+    }
+
+    override fun getSettingDataList(): ArrayList<String> {
+        return list
+    }
+
+    override fun settingTextList(text: String) {
+        list.add(text)
     }
 
     private fun updateText(text: String) {
