@@ -10,7 +10,7 @@ import com.example.shogoyamada.hashtagviewer.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.image_feed_cell.view.*
 
-class ImageFeedGridViewAdapter(private val activity: ImageFeedActivity, private val list: List<String>): RecyclerView.Adapter<ImageFeedGridViewAdapter.ViewHolder>() {
+class ImageFeedGridViewAdapter(activity: ImageFeedActivity, private val list: List<String>): RecyclerView.Adapter<ImageFeedGridViewAdapter.ViewHolder>() {
 
     private val inflater = LayoutInflater.from(activity)
 

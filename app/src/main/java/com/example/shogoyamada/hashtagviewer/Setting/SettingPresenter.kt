@@ -6,18 +6,6 @@ import dto.SettingDataDto
 
 class SettingPresenter(@NonNull activity: Activity, @NonNull private val viewContract: SettingContract) {
 
-    fun onCreate(){
-
-    }
-
-    fun onResume(){
-
-    }
-
-    fun onDestroy(){
-
-    }
-
     /**
      * 次へボタンを押した時
      */

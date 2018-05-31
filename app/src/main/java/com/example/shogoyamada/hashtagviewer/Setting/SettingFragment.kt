@@ -26,7 +26,6 @@ class SettingFragment: Fragment(), SettingContract {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter = SettingPresenter(activity, this)
-        presenter.onCreate()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,16 +38,6 @@ class SettingFragment: Fragment(), SettingContract {
         view.findViewById<View>(R.id.next).setOnClickListener {
             presenter.nextButton()
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        presenter.onResume()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.onDestroy()
     }
 
     override fun getEditText(): String {

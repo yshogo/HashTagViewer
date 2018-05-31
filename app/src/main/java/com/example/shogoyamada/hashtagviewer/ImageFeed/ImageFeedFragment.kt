@@ -17,7 +17,7 @@ class ImageFeedFragment : Fragment(), ImageFeedContract {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        presenter = ImageFeedPresenter(context, this)
+        presenter = ImageFeedPresenter(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

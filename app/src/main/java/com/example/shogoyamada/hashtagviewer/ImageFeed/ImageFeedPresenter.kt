@@ -2,11 +2,10 @@ package com.example.shogoyamada.hashtagviewer.ImageFeed
 
 import Task.Callback
 import Task.GetImageListTask
-import android.content.Context
 import android.support.annotation.NonNull
 import com.example.shogoyamada.hashtagviewer.Setting.ImageFeedModel
 
-class ImageFeedPresenter(context: Context?, @NonNull private val viewContract: ImageFeedContract) {
+class ImageFeedPresenter(@NonNull private val viewContract: ImageFeedContract) {
 
     fun onResume(){
 
