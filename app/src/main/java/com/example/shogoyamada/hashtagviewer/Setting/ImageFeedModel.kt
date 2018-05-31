@@ -16,7 +16,7 @@ data class ImageFeedModel(val page: Int, val pages: Int, val perpage: Int, val t
     }
 
     companion object {
-        fun createPhotoModelList(json: String): ImageFeedModel {
+        fun createPhotoModel(json: String): ImageFeedModel {
             val jsonRoot = JSONObject(json)
             val jsonObject = jsonRoot.getJSONObject("photos")
             return ImageFeedModel(

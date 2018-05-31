@@ -25,10 +25,6 @@ class ImageFeedFragment : Fragment(), ImageFeedContract {
         return inflater.inflate(R.layout.fragment_image_feed, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun onResume() {
         super.onResume()
 

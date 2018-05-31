@@ -59,6 +59,6 @@ class GetImageListTask(callbackListener: Callback): AsyncTask<String, Void, Imag
             return null
         }
 
-        return ImageFeedModel.createPhotoModelList(json)
+        return ImageFeedModel.createPhotoModel(json)
     }
 }

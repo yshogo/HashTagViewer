@@ -1,10 +1,9 @@
 package com.example.shogoyamada.hashtagviewer.Setting
 
-import android.app.Activity
 import android.support.annotation.NonNull
 import dto.SettingDataDto
 
-class SettingPresenter(@NonNull activity: Activity, @NonNull private val viewContract: SettingContract) {
+class SettingPresenter(@NonNull private val viewContract: SettingContract) {
 
     /**
      * 次へボタンを押した時

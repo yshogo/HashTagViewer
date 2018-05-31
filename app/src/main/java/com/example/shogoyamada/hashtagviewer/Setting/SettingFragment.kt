@@ -25,7 +25,7 @@ class SettingFragment: Fragment(), SettingContract {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = SettingPresenter(activity, this)
+        presenter = SettingPresenter(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
