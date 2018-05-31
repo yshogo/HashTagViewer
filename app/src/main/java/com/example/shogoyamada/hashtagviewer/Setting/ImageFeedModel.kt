@@ -6,8 +6,14 @@ data class ImageFeedModel(val page: Int, val pages: Int, val perpage: Int, val t
                           val list: ArrayList<ImageFeedModel.PhotoModel>) {
 
     data class PhotoModel(val id: String, val owner: String, val secret: String,
-                          val server: Int, val farm: Int, val title: String, val isPublic: Int,
-                          val isFriend: Int, val isFamily: Int)
+                          val server: Int, val farm: Int, val title: String,
+                          val isPublic: Int,
+                          val isFriend: Int, val isFamily: Int) {
+
+        fun createUrl(): String {
+            return "http://farm$farm.staticflickr.com/$server/$id" + "_" + secret + ".jpg"
+        }
+    }
 
     companion object {
         fun createPhotoModelList(json: String): ImageFeedModel {

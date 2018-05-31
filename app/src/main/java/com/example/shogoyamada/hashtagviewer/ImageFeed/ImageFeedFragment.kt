@@ -35,9 +35,6 @@ class ImageFeedFragment : Fragment(), ImageFeedContract {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // TODO 仮でこう実装している
-        renderImageGrid(view)
     }
 
     override fun onResume() {
@@ -46,30 +43,15 @@ class ImageFeedFragment : Fragment(), ImageFeedContract {
         presenter.onResume()
     }
 
-    private fun renderImageGrid(view: View) {
-        val sampleImageList = createSampleList()
-        val activity = activity as ImageFeedActivity
-        val adapter = ImageFeedGridViewAdapter(activity, sampleImageList)
-        adapter.notifyDataSetChanged()
-        view.image_feed.layoutManager = GridLayoutManager(activity, 4)
-        view.image_feed.adapter = adapter
+    override fun updateGrid(list: ArrayList<String>) {
+        renderImageGrid(list)
     }
 
-    private fun createSampleList(): ArrayList<String> {
-
-        val list = ArrayList<String>()
-
-        list.add("https://firebasestorage.googleapis.com/v0/b/onecam-ce3d7.appspot.com/o/group_item%2F12ie1WFq2KvslwLxFXur?alt=media&token=4b547ab9-7100-4ee9-9733-f29e738ec8f1")
-        list.add("https://firebasestorage.googleapis.com/v0/b/onecam-ce3d7.appspot.com/o/group_item%2F12ie1WFq2KvslwLxFXur?alt=media&token=4b547ab9-7100-4ee9-9733-f29e738ec8f1")
-        list.add("https://firebasestorage.googleapis.com/v0/b/onecam-ce3d7.appspot.com/o/group_item%2F12ie1WFq2KvslwLxFXur?alt=media&token=4b547ab9-7100-4ee9-9733-f29e738ec8f1")
-        list.add("https://firebasestorage.googleapis.com/v0/b/onecam-ce3d7.appspot.com/o/group_item%2F12ie1WFq2KvslwLxFXur?alt=media&token=4b547ab9-7100-4ee9-9733-f29e738ec8f1")
-        list.add("https://firebasestorage.googleapis.com/v0/b/onecam-ce3d7.appspot.com/o/group_item%2F12ie1WFq2KvslwLxFXur?alt=media&token=4b547ab9-7100-4ee9-9733-f29e738ec8f1")
-        list.add("https://firebasestorage.googleapis.com/v0/b/onecam-ce3d7.appspot.com/o/group_item%2F12ie1WFq2KvslwLxFXur?alt=media&token=4b547ab9-7100-4ee9-9733-f29e738ec8f1")
-        list.add("https://firebasestorage.googleapis.com/v0/b/onecam-ce3d7.appspot.com/o/group_item%2F12ie1WFq2KvslwLxFXur?alt=media&token=4b547ab9-7100-4ee9-9733-f29e738ec8f1")
-        list.add("https://firebasestorage.googleapis.com/v0/b/onecam-ce3d7.appspot.com/o/group_item%2F12ie1WFq2KvslwLxFXur?alt=media&token=4b547ab9-7100-4ee9-9733-f29e738ec8f1")
-        list.add("https://firebasestorage.googleapis.com/v0/b/onecam-ce3d7.appspot.com/o/group_item%2F12ie1WFq2KvslwLxFXur?alt=media&token=4b547ab9-7100-4ee9-9733-f29e738ec8f1")
-        list.add("https://firebasestorage.googleapis.com/v0/b/onecam-ce3d7.appspot.com/o/group_item%2F12ie1WFq2KvslwLxFXur?alt=media&token=4b547ab9-7100-4ee9-9733-f29e738ec8f1")
-
-        return list
+    private fun renderImageGrid(list: ArrayList<String>) {
+        val activity = activity as ImageFeedActivity
+        val adapter = ImageFeedGridViewAdapter(activity, list)
+        adapter.notifyDataSetChanged()
+        view?.image_feed?.layoutManager = GridLayoutManager(activity, 4)
+        view?.image_feed?.adapter = adapter
     }
 }

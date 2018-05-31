@@ -12,7 +12,11 @@ class ImageFeedPresenter(context: Context?, @NonNull private val viewContract: I
         // APIを叩く
         val task = GetImageListTask(object : Callback {
             override fun onSuccess(result: ImageFeedModel) {
-                print(result)
+                val urlList = ArrayList<String>()
+                for (photo in result.list) {
+                    urlList.add(photo.createUrl())
+                }
+                viewContract.updateGrid(urlList)
             }
 
             override fun onError() {
